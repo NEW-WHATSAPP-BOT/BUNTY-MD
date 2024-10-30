@@ -1,7 +1,7 @@
 {
-  "name": "SAHAS-MD",
-  "description": "Javascript WhatsApp bot made by Sahas Tech",
-  "logo": "https://telegra.ph/file/1e4ba22b080c8fd6134f2.jpg",
+  "name": "BUNTY-MD",
+  "description": "Javascript WhatsApp bot made by BUNTY-MD",
+  "logo": "https://unitedcamps.in/Images/file_5538.jpg",
   "keywords": ["bot"],
   "success_url": "/",
 
@@ -29,7 +29,7 @@
     "OWNER_NUMBER": {
       "description": "Owner Number",
       "required": true,
-      "default": "94718913389"
+      "default": "94753138584"
     },
     "ALIVE_IMG": {
       "description": "Put your alive img here.",
