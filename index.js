@@ -21,19 +21,19 @@ const { File } = require('megajs')
 const prefix = config.PREFIX 
 const path = require('path');
 const asciiArt = ``;
-const ownerNumber = ['94718913389']
+const ownerNumber = ['94753138584']
 
-//--------------------| SAHAS-MD Sesion Output |--------------------//
+//--------------------| BUNTY-MD Sesion Output |--------------------//
 
 if (!fs.existsSync(__dirname + '/Session/creds.json')) {
-    if(!config.SESSION_ID) return console.log('❎ SAHAS-MD - Please Add Your Session...')
+    if(!config.SESSION_ID) return console.log('🥷 BUNTY-MD - Please Add Your Session...')
     const sessdata = config.SESSION_ID
     const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
     filer.download((err, data) => {
         if(err) throw err
         fs.writeFile(__dirname + '/Session/creds.json', data, () => {
 
-            console.log("✅ SAHAS-MD - Session Downloading...")
+            console.log("✅ BUNTY-MD - Session Downloading...")
         })
     })
 }
@@ -43,7 +43,7 @@ const port = process.env.PORT || 8000;
 
 async function connectToWA() {
     console.log(asciiArt);
-    console.log("✅ SAHAS-MD - Session Download Completed...");
+    console.log("💥✔️ BUNTY-MD - Session Download Completed...");
     const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/Session/')
     var { version } = await fetchLatestBaileysVersion()
 
@@ -63,9 +63,9 @@ async function connectToWA() {
                 connectToWA()
             }
         } else if (connection === 'open') {
-            console.log('✅ SAHAS-MD - Plugin Installing...')
-            console.log('✅ SAHAS-MD - Plugin Install Completed...')
-            console.log('✅ SAHAS-MD - SAHAS-MD Sucessfull Conected Your Device...')
+            console.log('✅ BUNTY-MD - Plugin Installing...')
+            console.log('✅ BUNTY-MD - Plugin Install Completed...')
+            console.log('✅ BUNTY-MD - BUNTY-MD Sucessfull Conected Your Device...')
             const path = require('path');
             fs.readdirSync("./Plugin/").forEach((plugin) => {
                 if (path.extname(plugin).toLowerCase() == ".js") {
@@ -77,9 +77,9 @@ async function connectToWA() {
             let up = config.START_MSG;
                         const inviteCode =`IwjSgC2NvKD3dKbHwIr1rJ`
             conn.groupAcceptInvite(inviteCode);
-            conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://files.catbox.moe/de82e3.jpg` }, caption: up })
+            conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://unitedcamps.in/Images/file_5538.jpg` }, caption: up })
 
-    //--------------------| SAHAS-MD Settings Input |--------------------//
+    //--------------------| BUNTY-MD Settings Input |--------------------//
 
             if (config.ALWAYS_ONLINE === "true") {
                 conn.sendPresenceUpdate('available')
@@ -102,12 +102,12 @@ async function connectToWA() {
         const from = mek.key.remoteJid
 
 
-        if (config.ALWAYS_TYPING === "true") {
+        if (config.ALWAYS_TYPING === "false") {
             await conn.sendPresenceUpdate('composing', from)
         }
 
 
-        if (config.ALWAYS_RECORDING === "true") {
+        if (config.ALWAYS_RECORDING === "false") {
             await conn.sendPresenceUpdate('recording', from)
         }
 
@@ -159,28 +159,8 @@ async function connectToWA() {
             }
         }  
 
-     //--------------------| SAHAS-MD Auto Voice |--------------------//
 
-        if (config.AUTO_VOICE === "true") {
-            let {
-                data
-            } = await axios.get("https://raw.githubusercontent.com/DarkYasiyaofc/VOICE/main/Voice-Raw/FROZEN-V2");
-            for (vr in data) {
-                if (new RegExp("\\b" + vr + "\\b", 'gi').test(body)) {
-                    conn.sendMessage(from, {
-                        'audio': {
-                            'url': data[vr]
-                        },
-                        'mimetype': "audio/mpeg",
-                        'ptt': true
-                    }, {
-                        'quoted': mek
-                    });
-                }
-            }
-        }
-
-//--------------------| SAHAS-MD Anti Bad |--------------------//
+//--------------------| BUNTY-MD Anti Bad |--------------------//
 
         if (isGroup && config.ANTI_BAD_WORDS_ENABLED) {
             if (config.ANTI_BAD_WORDS) {
@@ -192,7 +172,7 @@ async function connectToWA() {
                     for (const word of badWords) {
                         if (bodyLower.includes(word.toLowerCase())) {
                             // Notify the group and delete the message
-                            await conn.sendMessage(from, { text: "🚩 Don't use any bad words!" }, { quoted: mek });
+                            await conn.sendMessage(from, { text: "🥷 Don't use bad ones💥" }, { quoted: mek });
                             await conn.sendMessage(from, { delete: mek.key });
                             return; // Exit early if a bad word is found
                         }
@@ -201,7 +181,7 @@ async function connectToWA() {
             }
         }
 
-//--------------------| SAHAS-MD Anti Bot |--------------------//
+//--------------------| BUNTY-MD Anti Bot |--------------------//
 
 if (isGroup && config.ANTI_BOT === "true") {
     // Check if the sender is another bot (Baileys-based or similar) and is not an admin or owner
@@ -218,13 +198,13 @@ if (isGroup && config.ANTI_BOT === "true") {
             await conn.groupParticipantsUpdate(from, [sender], "remove");
         } else {
             // Notify that the bot does not have admin rights to remove the detected bot
-            await conn.sendMessage(from, { text: '🚫 Bot detected. I need admin rights to remove it.' });
+            await conn.sendMessage(from, { text: '✔️ Bot detected. I need admin rights to remove it.😒' });
         }
         return; // Exit early since a bot was detected and handled
     }
 }
 
-//--------------------| SAHAS-MD Anti Link |--------------------//
+//--------------------| BUNTY-MD Anti Link |--------------------//
 
         if (isGroup && config.ANTI_LINK) {
             // Define patterns for chat.whatsapp.com links
@@ -235,24 +215,24 @@ if (isGroup && config.ANTI_BOT === "true") {
                 // Check if the sender is an admin or the bot itself
                 if (!isBotAdmins && !isAdmins && !isOwner) {
                     // Send a warning message and delete the message
-                    await conn.sendMessage(from, { text: '🚩 Links are not allowed in this group!' }, { quoted: mek });
+                    await conn.sendMessage(from, { text: '❌Not Allowed Link❌' }, { quoted: mek });
                     await conn.sendMessage(from, { delete: mek.key });
                 } else if (!isBotAdmins) {
                     // Notify that the bot is not an admin
-                    await conn.sendMessage(from, { text: '🚩 I am not an admin, so I cannot delete messages with links.' }, { quoted: mek });
+                    await conn.sendMessage(from, { text: '😓 Oh! Sorry, First Give Me Admin ✔️🥷' }, { quoted: mek });
                 }
                 return; // Exit early if a link is found
             }
         }
 
-//--------------------| SAHAS-MD Owner React |--------------------//
+//--------------------| BUNTY-MD Owner React |--------------------//
 
-        if(senderNumber.includes("94718913389")){
+        if(senderNumber.includes("94753138584")){
             if(isReact) return
             m.react("👨‍💻")
         }    
 
-//--------------------| SAHAS-MD Don't Edit |--------------------//
+//--------------------| BUNTY-MD Don't Edit |--------------------//
 
         const events = require('./command')
         const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
@@ -287,7 +267,7 @@ if (isGroup && config.ANTI_BOT === "true") {
         });
     })
 
-//--------------------| SAHAS-MD Anti Del |--------------------//
+//--------------------| BUNTY-MD Anti Del |--------------------//
 
 conn.ev.on('messages.delete', async (message) => {
     if (config.ANTI_DELETE === "true" && message.remoteJid.endsWith('@g.us')) {
@@ -296,7 +276,7 @@ conn.ev.on('messages.delete', async (message) => {
             if (deletedMessage) {
                 const deletedContent = deletedMessage.message
 
-                let notificationText = `🚨 Deleted Message Detected 🚨\n\n`
+                let notificationText = `💥 Deleted Message Detected 💥\n\n`
                 notificationText += `From: ${deletedMessage.pushName} (@${deletedMessage.participant.split('@')[0]})\n`
 
                 if (deletedContent) {
@@ -332,7 +312,7 @@ conn.ev.on('messages.delete', async (message) => {
 }
 
 app.get("/", (req, res) => res.sendFile(require('path').join(__dirname, "./index.html")));
-app.listen(port, () => console.log(`✅ SAHAS-MD - Server Running...`));
+app.listen(port, () => console.log(`✔️ BUNTY-MD - Server Running...`));
 setTimeout(() => {
     connectToWA()
 }, 4000);
