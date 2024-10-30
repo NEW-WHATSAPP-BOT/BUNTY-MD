@@ -1,2 +1,2 @@
-# BUNTY-MD
-Best Whatsapp Bot | Bunty Md 🥷💗
+# SAHAS-MD
+ད Ｔｈｅ Ｆｕｔｕｒｅ Ｔｅｃｈｎｏｌｏｇｙ Ｉｓ Ｔｏｄａｙ ⚡
