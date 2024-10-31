@@ -48,7 +48,7 @@ module.exports = {
 //------------------------------------------------------------------------------------------------------------------
 
   
-  START_MSG: process.env.START_MSG || `BUNTY-MD Conected` ,
+  START_MSG: process.env.START_MSG || `*_👋 BUNTY-MD Conected ✔️_*` ,
 
   ALIVE_IMG: process.env.ALIVE_IMG || "https://unitedcamps.in/Images/file_5538.jpg",
   MENU_IMG: process.env.MENU_IMG || "https://unitedcamps.in/Images/file_5538.jpg",
